@@ -6,9 +6,7 @@ import { fileURLToPath } from 'url';
 import morgan from 'morgan';
 
 // Imports from files
-import { planetsRouter } from './routes/planets/planets.router.js';
-import { launchesRouter } from './routes/launches/launches.router.js';
-
+import api from './routes/api.js';
 // Defining the express app
 const app = express();
 
@@ -25,8 +23,7 @@ app.use(
         path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public')
     )
 );
-app.use('/planets', planetsRouter);
-app.use('/launches', launchesRouter);
+app.use('/v1', api);
 app.get('/*', (req, res) => {
     res.sendFile(
         path.join(
