@@ -18,7 +18,7 @@ app.use(
         origin: 'http://localhost:3000',
     })
 );
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(
     express.static(
@@ -27,7 +27,7 @@ app.use(
 );
 app.use('/planets', planetsRouter);
 app.use('/launches', launchesRouter);
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(
         path.join(
             path.dirname(fileURLToPath(import.meta.url)),
