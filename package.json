@@ -2,6 +2,10 @@
     "name": "nasa_project",
     "version": "1.0.0",
     "main": "index.js",
+    "author": {
+        "name": "Habibi Med Wassim",
+        "email": "habibimedwassim@gmail.com"
+    },
     "scripts": {
         "install-server": "npm install --prefix server",
         "install-client": "npm install --prefix client",
@@ -12,7 +16,6 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
-    "author": "",
     "license": "MIT",
     "description": ""
 }
