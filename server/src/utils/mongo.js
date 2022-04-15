@@ -6,7 +6,7 @@ dotenv.config();
  * and the url of our mongo database
  */
 const dbName = 'nasa';
-const MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL = 'mongodb://localhost:27017/';
 
 mongoose.Promise = global.Promise;
 // Created the connection to mongo database
