@@ -2,6 +2,7 @@ import { parse } from 'csv-parse';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import planets from './planets.mongo.js';
 
 function isHabitable(planet) {
     return (
@@ -19,7 +20,7 @@ const parser = parse({
     columns: true,
 });
 
-function loadPlanetsData() {
+async function loadPlanetsData() {
     return new Promise((resolve, reject) => {
         fs.createReadStream(
             path.join(
@@ -31,17 +32,33 @@ function loadPlanetsData() {
             .pipe(parser)
             .on('data', (data) => {
                 if (isHabitable(data)) {
-                    habitablePlanets.push(data);
+                    savePlanets(data);
                 }
             })
             .on('error', (err) => reject(err))
-            .on('end', () => {
-                console.log(`Habitable planets: ${habitablePlanets.length}`);
+            .on('end', async () => {
+                const planetsCount = (await getAllPlanets()).length;
+                console.log(`Habitable planets: ${planetsCount}`);
                 resolve();
             });
     });
 }
-function getAllPlanets() {
-    return habitablePlanets;
+async function getAllPlanets() {
+    return await planets.find({}, { __v: 0, _id: 0 });
+}
+async function savePlanets(planet) {
+    try {
+        await planets.updateOne(
+            {
+                keplerName: planet.kepler_name,
+            },
+            {
+                keplerName: planet.kepler_name,
+            },
+            { upsert: true }
+        );
+    } catch (err) {
+        console.error(err);
+    }
 }
 export { getAllPlanets, loadPlanetsData };

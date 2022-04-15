@@ -9,7 +9,7 @@
     "main": "src/server.js",
     "type": "module",
     "scripts": {
-        "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+        "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --detectOpenHandles",
         "test-watch": "NODE_OPTIONS=--experimental-vm-modules npx jest --watch",
         "watch": "nodemon src/server.js",
         "cluster": "pm2 start src/server.js -i max",
@@ -17,10 +17,14 @@
     },
     "keywords": [],
     "license": "MIT",
+    "jest": {
+        "testEnvironment": "node"
+    },
     "dependencies": {
         "cors": "^2.8.5",
         "csv-parse": "^5.0.4",
         "express": "^4.17.3",
+        "mongoose": "^6.2.4",
         "morgan": "^1.10.0",
         "pm2": "^5.2.0"
     },
