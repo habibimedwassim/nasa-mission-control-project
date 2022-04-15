@@ -4,6 +4,10 @@
     "description": "NASA MISSION CONTROL API",
     "main": "src/server.js",
     "type": "module",
+    "author": {
+        "name": "Habibi Med Wassim",
+        "email": "habibimedwassim@gmail.com"
+    },
     "scripts": {
         "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --detectOpenHandles",
         "test-watch": "NODE_OPTIONS=--experimental-vm-modules npx jest --watch",
@@ -12,14 +16,15 @@
         "start": "node src/server.js"
     },
     "keywords": [],
-    "author": "Vazym Hubbs",
-    "license": "ISC",
+    "license": "MIT",
     "jest": {
         "testEnvironment": "node"
     },
     "dependencies": {
+        "axios": "^0.26.0",
         "cors": "^2.8.5",
         "csv-parse": "^5.0.4",
+        "dotenv": "^16.0.0",
         "express": "^4.17.3",
         "mongoose": "^6.2.4",
         "morgan": "^1.10.0",

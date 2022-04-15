@@ -1,16 +1,19 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 /**
  * defining the name
  * and the url of our mongo database
  */
 const dbName = 'nasa';
-const dbUrl = `mongodb://localhost:27017/${dbName}`;
+const MONGO_URL = process.env.MONGO_URL;
 
+mongoose.Promise = global.Promise;
 // Created the connection to mongo database
 
 async function connectDatabase() {
     await mongoose
-        .connect(dbUrl)
+        .connect(MONGO_URL)
         .then(() => {
             console.log(`Connected to ${dbName}`);
         })
@@ -20,7 +23,7 @@ async function connectDatabase() {
 }
 async function disconnectDatabase() {
     await mongoose
-        .disconnect(dbUrl)
+        .disconnect(MONGO_URL)
         .then(() => {
             console.log(`Disconnected ${dbName}`);
         })

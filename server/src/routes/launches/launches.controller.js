@@ -4,9 +4,14 @@ import {
     abortLaunch,
     existsById,
 } from '../../models/launches.model.js';
+import { getPagination } from '../../utils/query.js';
 
 async function httpGetAllLaunches(req, res) {
-    return res.status(200).json(await getAllLaunches());
+    console.log(req.query);
+    const result = getPagination(req.query);
+    console.log(`skip(page):${result.skip}..limit:${result.limit}..`);
+    const launches = await getAllLaunches(result.skip, result.limit);
+    return res.status(200).json(launches);
 }
 
 async function httpSubmitLaunch(req, res) {
