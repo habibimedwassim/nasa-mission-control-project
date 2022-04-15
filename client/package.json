@@ -1,11 +1,7 @@
 {
-    "name": "nasa_front_end",
+    "name": "nasa-fe",
     "version": "1.0.0",
     "private": true,
-    "author": {
-        "name": "Habibi Med Wassim",
-        "email": "habibimedwassim@gmail.com"
-    },
     "dependencies": {
         "arwes": "^1.0.0-alpha.5",
         "react": "^17.0.2",

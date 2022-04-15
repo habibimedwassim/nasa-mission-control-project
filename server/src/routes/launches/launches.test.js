@@ -10,10 +10,10 @@ describe('Testing Launches API', () => {
     afterAll(async () => {
         await mongo.disconnectDatabase();
     });
-    describe('Test GET: /launches', () => {
+    describe('Test GET: /v1/launches', () => {
         test('It should respond with 200 SUCCESS', async () => {
             await request(app)
-                .get('/launches')
+                .get('/v1/launches')
                 .expect('Content-Type', /json/)
                 .expect(200);
         });
@@ -42,7 +42,7 @@ describe('Testing Launches API', () => {
 
         test('It should respond with 201 SUCCESS', async () => {
             const response = await request(app)
-                .post('/launches')
+                .post('/v1/launches')
                 .send(completeLaunchData)
                 .expect('Content-Type', /json/)
                 .expect(201);
@@ -56,7 +56,7 @@ describe('Testing Launches API', () => {
 
         test('It should catch missing required properties (400) ', async () => {
             const response = await request(app)
-                .post('/launches')
+                .post('/v1/launches')
                 .send(incompleteLaunchData)
                 .expect('Content-Type', /json/)
                 .expect(400);
@@ -67,7 +67,7 @@ describe('Testing Launches API', () => {
 
         test('It should catch Invalid dates', async () => {
             const response = await request(app)
-                .post('/launches')
+                .post('/v1/launches')
                 .send(invalidDateLaunchData)
                 .expect('Content-Type', /json/)
                 .expect(400);

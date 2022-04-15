@@ -2,10 +2,6 @@
     "name": "nasa-project-api",
     "version": "1.0.0",
     "description": "NASA MISSION CONTROL API",
-    "author": {
-        "name": "Habibi Med Wassim",
-        "email": "habibimedwassim@gmail.com"
-    },
     "main": "src/server.js",
     "type": "module",
     "scripts": {
@@ -16,7 +12,8 @@
         "start": "node src/server.js"
     },
     "keywords": [],
-    "license": "MIT",
+    "author": "Vazym Hubbs",
+    "license": "ISC",
     "jest": {
         "testEnvironment": "node"
     },

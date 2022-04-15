@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import morgan from 'morgan';
 
 // Imports from files
-import api from './routes/api.js';
+import { api } from './routes/api.js';
 // Defining the express app
 const app = express();
 

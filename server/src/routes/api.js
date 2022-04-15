@@ -7,4 +7,4 @@ const api = express.Router();
 api.use('/planets', planetsRouter);
 api.use('/launches', launchesRouter);
 
-export default { api };
+export { api };
